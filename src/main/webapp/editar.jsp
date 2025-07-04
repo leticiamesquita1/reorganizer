@@ -11,12 +11,16 @@
     if ("GET".equalsIgnoreCase(metodo)) {
         String idStr = request.getParameter("id");
         if (idStr != null && !idStr.isEmpty()) {
-            int id = Integer.parseInt(idStr);
-            insumo = controller.buscarPorId(id);
-            if (insumo == null) {
-                msg = "Insumo não encontrado.";
-            } else {
-                editar = true;
+            try {
+                int id = Integer.parseInt(idStr);
+                insumo = controller.buscarPorId(id);
+                if (insumo == null) {
+                    msg = "Insumo não encontrado.";
+                } else {
+                    editar = true;
+                }
+            } catch (Exception e) {
+                msg = "ID inválido.";
             }
         }
     } else if ("POST".equalsIgnoreCase(metodo)) {
@@ -29,44 +33,34 @@
             int idFarmacia = Integer.parseInt(request.getParameter("idFarmacia"));
             int idAlmoxarifado = Integer.parseInt(request.getParameter("idAlmoxarifado"));
 
-            if (idStr != null && !idStr.isEmpty()) {
-                int id = Integer.parseInt(idStr);
-                Insumos i = new Insumos();
-                i.setId(id);
-                i.setNome(nome);
-                i.setDescricao(descricao);
-                i.setQuantidade(quantidade);
-                i.setValidade(validade);
-                i.setIdFarmacia(idFarmacia);
-                i.setIdAlmoxarifado(idAlmoxarifado);
+            Insumos i = new Insumos();
+            i.setNome(nome);
+            i.setDescricao(descricao);
+            i.setQuantidade(quantidade);
+            i.setValidade(validade);
+            i.setIdFarmacia(idFarmacia);
+            i.setIdAlmoxarifado(idAlmoxarifado);
 
+            if (idStr != null && !idStr.isEmpty()) {
+                i.setId(Integer.parseInt(idStr));
                 boolean sucesso = controller.atualizarInsumo(i);
                 if (sucesso) {
                     response.sendRedirect("consulta.jsp");
                     return;
                 } else {
                     msg = "Falha ao atualizar insumo.";
-                    insumo = i;
                     editar = true;
                 }
             } else {
-                Insumos i = new Insumos();
-                i.setNome(nome);
-                i.setDescricao(descricao);
-                i.setQuantidade(quantidade);
-                i.setValidade(validade);
-                i.setIdFarmacia(idFarmacia);
-                i.setIdAlmoxarifado(idAlmoxarifado);
-
                 boolean sucesso = controller.inserirInsumo(i);
                 if (sucesso) {
                     response.sendRedirect("consulta.jsp");
                     return;
                 } else {
                     msg = "Falha ao inserir insumo.";
-                    insumo = i;
                 }
             }
+            insumo = i;
         } catch (Exception e) {
             msg = "Erro: " + e.getMessage();
         }
@@ -77,54 +71,19 @@
 <head>
     <meta charset="UTF-8" />
     <title><%= editar ? "Editar" : "Adicionar" %> Insumo</title>
-    <link rel="stylesheet" href="estilos/consulta.css" />
-    <style>
-        .btn-voltar {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .btn-voltar:hover {
-            background-color: #0056b3;
-        }
-        .erro {
-            color: red;
-            font-weight: bold;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input, textarea {
-            width: 100%;
-            max-width: 400px;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            font-weight: bold;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="estilos/editar.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 <body>
-    <h2><%= editar ? "Editar" : "Adicionar" %> Insumo</h2>
+<header>
+    <h1>reOrganizer</h1>
+    <a href="consulta.jsp" class="btn-voltar-navbar">
+        <i class="bi bi-arrow-left-circle"></i> Voltar
+    </a>
+</header>
 
+<main class="container-form">
+    <h2><%= editar ? "Editar" : "Adicionar" %> Insumo</h2>
     <% if (!msg.isEmpty()) { %>
         <p class="erro"><%= msg %></p>
     <% } %>
@@ -158,10 +117,14 @@
             <input type="number" name="idAlmoxarifado" min="0" required value="<%= insumo != null ? insumo.getIdAlmoxarifado() : "0" %>" />
         </label>
 
-        <button type="submit"><%= editar ? "Salvar Alterações" : "Adicionar Insumo" %></button>
+        <button type="submit" class="btn-salvar">
+            <%= editar ? "Salvar Alterações" : "Adicionar Insumo" %>
+        </button>
     </form>
-    <p>
-        <a href="consulta.jsp" class="btn-voltar">Voltar para lista</a>
-    </p>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 reOrganizer</p>
+</footer>
 </body>
 </html>

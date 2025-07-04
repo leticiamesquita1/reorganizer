@@ -55,7 +55,7 @@
   </main>
 
   <footer>
-    <p>© 2025 ReOrganizer | Soluções em Gestão de Estoque Hospitalar</p>
+    <p>© 2025 ReOrganizer</p>
   </footer>
 
   <button class="toggle-dark-mode" onclick="toggleDarkMode()">🌓</button>

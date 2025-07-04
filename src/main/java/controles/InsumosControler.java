@@ -87,6 +87,23 @@ public class InsumosControler extends HttpServlet {
             return false;
         }
     }
+    
+    public List<Insumos> listarInsumosPorNome(String nome) {
+        List<Insumos> lista = new ArrayList<>();
+        String sql = "SELECT * FROM tb_insumos WHERE nome LIKE ?";
+        try (Connection conn = ConexaoDB.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                lista.add(mapearInsumo(rs));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
 
     public Insumos buscarPorId(int id) {
         String sql = "SELECT * FROM tb_insumos WHERE id=?";
