@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReOrganizer | Gestão de Estoque Hospitalar</title>
+  <link rel="stylesheet" href="estilos/home.css" />
+</head>
+<body>
+<header>
+  <nav>
+    <div class="nav-left">
+      <a href="#hero">Início</a>
+      <a href="#about">Sobre</a>
+      <a href="#services">Soluções</a>
+      <a href="#contact">Contato</a>
+    </div>
+    <div class="nav-right">
+    <a href="login.html" class="user-icon" title="Perfil do Usuário">&#128100;</a>
+    </div>
+  </nav>
+</header>
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Eficiência em Gestão de Estoques Hospitalares</h1>
+    <p>Soluções inteligentes para controle de insumos e medicamentos</p>
+    <button class="btn-primary">Solicite uma Demonstração</button>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-text">
+    <h2>Sobre a ReOrganizer</h2>
+    <p>Somos especialistas em otimização de estoques hospitalares, oferecendo tecnologia de ponta e suporte personalizado para farmácias, hospitais e clínicas.</p>
+  </div>
+  <div class="about-img">
+    <img src="hospital1.jpg" alt="Controle de Estoque" />
+  </div>
+</section>
+
+<section class="services" id="services">
+  <h2>Soluções em Destaque</h2>
+  <div class="service-list">
+    <div class="service-item">
+      <h3>Monitoramento em Tempo Real</h3>
+      <p>Acompanhe estoques, validade e consumo com dados em tempo real e alertas automáticos.</p>
+    </div>
+    <div class="service-item">
+      <h3>Reposição Automatizada</h3>
+      <p>Evite rupturas e excessos com reposições baseadas em consumo inteligente.</p>
+    </div>
+    <div class="service-item">
+      <h3>Relatórios Gerenciais</h3>
+      <p>Visualize indicadores de desempenho e tomada de decisão com dashboards intuitivos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Fale Conosco</h2>
+  <form>
+    <input type="text" placeholder="Nome completo" required />
+    <input type="email" placeholder="E-mail" required />
+    <textarea rows="5" placeholder="Mensagem"></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 ReOrganizer | Soluções em Gestão de Estoque Hospitalar</p>
+</footer>
+
+<button class="toggle-dark-mode" onclick="toggleDarkMode()">🌓</button>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
+
+</body>
+</html>

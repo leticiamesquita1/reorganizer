@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  padding-top: 70px;
+  transition: background 0.3s, color 0.3s;
+}
+ 
+header {
+  background: #181c49;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+ 
+.nav-left a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+ 
+.nav-left a:hover {
+  background-color: white;
+  color: #181c49;
+}
+ 
+.admin-panel {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px 20px;
+}
+ 
+.admin-panel h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #181c49;
+  justify-self: center;
+}
+ 
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+ 
+#searchInput {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+ 
+#darkModeBtn {
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  background: #181c49;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+ 
+#darkModeBtn:hover {
+  background: #0e1230;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+ 
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+ 
+th {
+  background-color: #181c49;
+  color: white;
+}
+ 
+button {
+  background-color: #181c49;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+ 
+button:hover {
+  background-color: #0e1230;
+}
+body.dark-mode {
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+ 
+body.dark-mode header {
+  background: #161b22;
+}
+ 
+body.dark-mode .nav-left a {
+  color: #e6edf3;
+}
+ 
+body.dark-mode .nav-left a:hover {
+  background-color: #e6edf3;
+  color: #161b22;
+}
+ 
+body.dark-mode .admin-panel h1 {
+  color: #e6edf3;
+}
+ 
+body.dark-mode #searchInput {
+  background: #21262d;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+}
+ 
+body.dark-mode #searchInput::placeholder {
+  color: #8b949e;
+}
+ 
+body.dark-mode table {
+  background: #161b22;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+}
+ 
+body.dark-mode th {
+  background: #0d1117;
+  color: #f0f6fc;
+}
+ 
+body.dark-mode td {
+  border-color: #30363d;
+}
+ 
+body.dark-mode button,
+body.dark-mode #darkModeBtn {
+  background: #238636;
+  color: white;
+}
+ 
+body.dark-mode button:hover,
+body.dark-mode #darkModeBtn:hover {
+  background: #2ea043;
+}
+
+#darkModeBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  background: #181c49;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#darkModeBtn:hover {
+  background: #0e1230;
+}

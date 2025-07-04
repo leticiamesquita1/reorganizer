@@ -1,0 +1,226 @@
+/* estilos/consulta.css */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	padding-top: 70px;
+	transition: background 0.3s, color 0.3s;
+	color: #181c49;
+	display: flex;
+  	flex-direction: column;
+  	min-height: 100vh;
+}
+
+
+
+header {
+	background: #181c49;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+	color: white;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+header h1 {
+	font-size: 1.8rem;
+}
+
+form {
+	margin: 20px auto;
+	max-width: 700px;
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+}
+
+form input[type="text"] {
+	flex: 1;
+	padding: 12px;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus {
+	border-color: #181c49;
+	outline: none;
+}
+
+form button {
+	background-color: #181c49;
+	color: white;
+	border: none;
+	padding: 12px 20px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background-color 0.3s;
+}
+
+form button:hover {
+	background-color: #0e1230;
+}
+
+table {
+	width: 90%;
+	max-width: 1000px;
+	margin: 0 auto 40px auto;
+	border-collapse: collapse;
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	padding: 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	color: #181c49;
+}
+
+th {
+	background-color: #181c49;
+	color: white;
+}
+
+tr:hover {
+	background-color: #f0f0f0;
+}
+
+.center {
+	text-align: center;
+	padding: 20px;
+	color: #555;
+}
+
+a {
+	color: #181c49;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.3s;
+}
+
+a:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
+.editar-estoque-fixo {
+	position: fixed;
+	bottom: 40px;
+	right: 20px;
+	background-color: #181c49;
+	color: white;
+	padding: 12px 18px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+	box-shadow: 0 4px 8px rgba(24, 28, 73, 0.3);
+	z-index: 1000;
+}
+
+.editar-estoque-fixo:hover {
+	background-color: #0e1230;
+}
+
+.footer {
+	background: #181c49;
+	color: white;
+	text-align: center;
+	padding: 25px 20px;
+	font-weight: 600;
+	margin-top: auto;
+}
+
+/* Dark mode support */
+body.dark-mode {
+	background-color: #0d1117;
+	color: #e6edf3;
+}
+
+body.dark-mode header {
+	background: #161b22;
+}
+
+body.dark-mode header h1 {
+	color: #e6edf3;
+}
+
+body.dark-mode form input[type="text"] {
+	background: #21262d;
+	color: #e6edf3;
+	border: 1px solid #30363d;
+}
+
+body.dark-mode form input[type="text"]::placeholder {
+	color: #8b949e;
+}
+
+body.dark-mode form button {
+	background: #238636;
+	color: white;
+}
+
+body.dark-mode form button:hover {
+	background: #2ea043;
+}
+
+body.dark-mode table {
+	background: #161b22;
+	color: #e6edf3;
+	border: 1px solid #30363d;
+}
+
+body.dark-mode th {
+	background: #0d1117;
+	color: #f0f6fc;
+}
+
+body.dark-mode td {
+	border-color: #30363d;
+}
+
+body.dark-mode tr:hover {
+	background-color: #21262d;
+}
+
+body.dark-mode a {
+	color: #58a6ff;
+}
+
+body.dark-mode a:hover {
+	color: #1f6feb;
+}
+
+body.dark-mode .editar-estoque-fixo {
+	background: #238636;
+	box-shadow: 0 4px 8px rgba(35, 134, 54, 0.5);
+}
+
+body.dark-mode .editar-estoque-fixo:hover {
+	background: #2ea043;
+}
+
+body.dark-mode .footer {
+	color: #8b949e;
+	border-top-color: #30363d;
+}
