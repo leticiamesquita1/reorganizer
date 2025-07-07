@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #181c49;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #181c49;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+.btn-voltar-navbar {
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    background-color: #181c49;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+}
+
+.btn-voltar-navbar:hover {
+    background-color: #404a8d;
+}
+
+main.container-form {
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 60px auto;
+    padding: 20px;
+    max-height: 800px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #181c49;
+    font-size: 1.6rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #181c49;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #007bff;
+}
+
+.btn-salvar {
+    width: 100%;
+    padding: 12px;
+    background-color: #181c49;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-salvar:hover {
+    background-color: #404a8d;
+}
+
+.erro {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.footer {
+    background: #181c49;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-weight: 600;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}

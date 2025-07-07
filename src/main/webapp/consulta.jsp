@@ -14,8 +14,8 @@
     String busca = request.getParameter("busca");
     InsumosControler controller = new InsumosControler();
     List<Insumos> lista = new ArrayList<>();
-    controles.FuncionariosControler fc = new controles.FuncionariosControler();
-    List<modelos.Funcionarios> listaFunc = new ArrayList<>();
+    FuncionariosControler fc = new FuncionariosControler();
+    List<Funcionarios> listaFunc = new ArrayList<>();
 
     if ("insumos".equals(tipo)) {
         if (busca != null && !busca.trim().isEmpty()) {
@@ -33,7 +33,7 @@
         if (busca != null && !busca.trim().isEmpty()) {
             try {
                 int id = Integer.parseInt(busca.trim());
-                modelos.Funcionarios f = fc.buscarPorId(id);
+                Funcionarios f = fc.buscarPorId(id);
                 if (f != null) listaFunc.add(f);
             } catch (NumberFormatException e) {
                 listaFunc = fc.listarPorNome(busca.trim());
@@ -56,7 +56,6 @@
 <header>
     <h1>Controle de Dados</h1>
 </header>
-
 <div class="filtros-container">
     <div class="botoes-tipo">
         <a href="consulta.jsp?tipo=insumos" class="<%= "insumos".equals(tipo) ? "ativo" : "" %>">Medicamentos</a>
@@ -65,10 +64,10 @@
     <form action="consulta.jsp" method="get" class="form-busca">
         <input type="hidden" name="tipo" value="<%= tipo %>" />
         <input type="text" name="busca" placeholder="Pesquisar..." value="<%= busca != null ? busca : "" %>" autocomplete="off" />
-       <a href="editar.jsp" class="btn-editar" title="Editar">
-    <i class="bi bi-pencil-square"></i>
-</a>
-
+     
+        <a href="<%= "funcionarios".equals(tipo) ? "editarFuncionarios.jsp" : "editar.jsp" %>?tipo=<%= tipo %>" class="btn-editar" title="Adicionar">
+            <i class="bi bi-pencil-square"></i>
+        </a>
     </form>
 </div>
 
@@ -104,20 +103,21 @@
 <table>
     <thead>
         <tr>
-            <th>ID</th><th>Nome</th><th>CPF</th><th>Função</th><th>Ações</th>
+            <th>ID</th><th>Nome</th><th>CPF</th><th>Cargo</th><th>Ações</th>
         </tr>
     </thead>
     <tbody>
     <% if (listaFunc.isEmpty()) { %>
-        <tr><td colspan="5" class="center">Nenhum funcionário encontrado. </td></tr>
+        <tr><td colspan="5" class="center">Nenhum funcionário encontrado.</td></tr>
     <% } else {
-        for (modelos.Funcionarios f : listaFunc) { %>
+        for (Funcionarios f : listaFunc) { %>
         <tr>
             <td><%= f.getId() %></td>
             <td><%= f.getNome() %></td>
             <td><%= f.getCpf() %></td>
+            <td><%= f.getCargo() %></td>
             <td>
-                <a href="editarFuncionario.jsp?id=<%= f.getId() %>">Editar</a> |
+                <a href="editarFuncionarios.jsp?id=<%= f.getId() %>">Editar</a> |
                 <a href="funcionarios?acao=excluir&id=<%= f.getId() %>" onclick="return confirm('Confirma exclusão?');">Excluir</a>
             </td>
         </tr>
@@ -129,5 +129,26 @@
 <div class="footer">
     <p>© 2025 reOrganizer</p>
 </div>
+
+<script>
+  // Salva aba selecionada ao clicar
+  document.querySelectorAll('.botoes-tipo a').forEach(link => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href');
+      const tipoParam = href.split('tipo=')[1];
+      localStorage.setItem('abaSelecionada', tipoParam);
+    });
+  });
+
+  // Se não tiver 'tipo' na URL, redireciona para última aba salva
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('tipo')) {
+      const aba = localStorage.getItem('abaSelecionada') || 'insumos';
+      window.location.href = window.location.pathname + '?tipo=' + aba;
+    }
+  })();
+</script>
+
 </body>
 </html>

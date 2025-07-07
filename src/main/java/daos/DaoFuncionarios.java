@@ -1,6 +1,15 @@
 package daos;
 
-import java.sql.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import modelos.Funcionarios;
 import utils.ConexaoDB;
 
@@ -33,5 +42,17 @@ public class DaoFuncionarios {
             throw new RuntimeException("Erro ao autenticar funcionário: " + e.getMessage());
         }
         return null;
+    }
+    public boolean delete(int id) {
+        String sql = "DELETE FROM tb_funcionario WHERE id = ?";
+        try (Connection con = ConexaoDB.getConexao();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            int affected = pst.executeUpdate();
+            return affected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
